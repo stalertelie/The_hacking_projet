@@ -1,0 +1,57 @@
+<h1>Email#index</h1>
+<p>Find me in app/views/email/index.html.erb</p>
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Emails</th>
+      <th>Show</th>
+      <th>Show deuxième methode</th>
+      <th>Erase</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @emails.each do |email| %>
+      <tr id="<%= email.id %>">
+        
+        <td><%= email.object %></td>
+
+        <td><%= link_to 'Read this mail', email, method: :get, remote: true, :class => 'read_mail' %>
+		</td>
+
+		 <td class="show"> Show ? </td>
+
+        <td class="destroy"> Delete </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table style="" id="content-mail"> <!-- block/none -->
+ 
+  Ici ->
+
+</table>
+
+
+<%= form_for(@product) do |f| %>
+<div class="field">
+ <%= f.label :name %><br>
+ <%= f.text_field :name %>
+</div>
+<div class="field">
+ <%= f.label :price %><br>
+ <%= f.text_field :price %>
+</div>
+<div class="field">
+ <%= f.label :category_name %><br>
+ <%= f.text_field :category_name, data: {autocomplete_source: Category.order(:name).map(&:name)} %>
+</div>
+<div class="actions">
+ <%= f.submit %><br>
+</div>
+<% end %>
